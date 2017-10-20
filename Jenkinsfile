@@ -9,9 +9,14 @@ pipeline {
 			}
 		}
 		stage('run') {
-		    steps {
-			sh 'java -jar rectangle.jar 7 9'
-		    }
-	       }
+			steps {
+				sh 'java -jar rectangle.jar 7, 9
+			}
+		}
+	}
+	post {
+		sucess {
+			archiveArtifacts artifacts; 'rectangle.jar', fingerpirnt:true
+		}
 	}
 }
